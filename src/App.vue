@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <button @click="showViewer('1')">全局引入</button>
-    <button @click="showViewer('2')">局部引入</button>
+    <button @click="showViewer('1')">展示</button>
   </div>
 </template>
 
 <script>
-import PreviewPic from 'vue-preview-pictures'
 export default {
   name: 'app',
   data() {
@@ -17,42 +15,22 @@ export default {
         'http://www.jf258.com/uploads/2014-09-29/012939994.jpg',
         'http://img31.51tietu.net/pic/2016-120719/20161207194943n3oqafqlsde117165.jpg',
         'http://pic1.win4000.com/wallpaper/3/58f4672ad3c5c.jpg'
-      ],
-      list2: [
-        'http://uploads.xuexila.com/allimg/1612/804-161206153303.jpg',
-        'http://dik.img.kttpdq.com/pic/2/1111/70283902b35b3cb2.jpg',
-        'http://p.qpic.cn/dnfbbspic/0/dnfbbs_dnfbbs_dnf_gamebbs_qq_com_forum_201910_17_082503ztpxsgizux3qwxsk.jpg/0',
-        'http://www.07073.com/uploads/150413/17598486_144058_1.jpg'
       ]
     };
   },
   methods: {
     showViewer(index) {
-      if (index === '1') {
-        this.$PreviewPic({
-          zIndex: 2000,
-          index: 2,
-          list: this['list' + index],
-          onClose: (i) => {
-            console.log(i)
-          },
-          onSelect: (i) => {
-            console.log(i)
-          }
-        })
-      } else {
-        PreviewPic({
-          zIndex: 2000,
-          index: 2,
-          list: this['list' + index],
-          onClose: (i) => {
-            console.log(i)
-          },
-          onSelect: (i) => {
-            console.log(i)
-          }
-        })
-      }
+      this.$PreviewPic({
+        zIndex: 2000,
+        index: 2,
+        list: this['list' + index],
+        onClose: (i) => {
+          console.log(i)
+        },
+        onSelect: (i) => {
+          console.log(i)
+        }
+      })
     }
   }
 };

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 
-import PreviewPic from 'vue-preview-pictures'
+import PreviewPic from '@/packages/vue-preview-pictures.vue'
 Vue.prototype.$PreviewPic = PreviewPic
 
 
