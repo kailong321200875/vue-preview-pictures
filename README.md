@@ -1,18 +1,61 @@
-# vue-preview-pictures
+## 一款基于VUE的图片预览插件
 
-> A Vue.js project
+![预览图片](https://raw.githubusercontent.com/kailong321200875/my-image/master/Video_2019-11-17_172546.gif)
 
-## Build Setup
+### 大多数图片预览都是基于子元素为img标签来实现，感觉有点太死板了。所以自己就搞了一个在JS中调用图片预览，只需要传入对应的参数就能实现图片预览，不在关注与HTML长什么样子。
 
-``` bash
-# install dependencies
-npm install
+## 导入
 
-# serve with hot reload at localhost:8080
-npm run dev
+> npm install vue-preview-pictures
 
-# build for production with minification
-npm run build
+## 全局引入
+
+在 main.js 中引入
+
+```
+  import PreviewPic from 'vue-preview-pictures'
+  Vue.prototype.$PreviewPic = PreviewPic
+  
+  可以直接挂在到VUE的原型上，作为全局使用
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 局部引入
+
+```
+  import PreviewPic from 'vue-preview-pictures'
+  
+  也可以单独在VUE文件中使用
+```
+
+## 使用方式
+
+```
+this.$PreviewPic({
+  zIndex: 2000, // 组件的zIndex值 默认为2000
+  index: 2, // 展示第几张图片 默认为0
+  list: list, // 需要展示图片list
+  onClose: (i) => { // 关闭时的回调
+    console.log(i)
+  },
+  onSelect: (i) => { // 点击某张图片的回调
+    console.log(i)
+  }
+})
+```
+
+## 全局方法
+
+另外还提供一个全局方法来关闭组件
+```
+this.$PreviewPic.close(() => {
+  console.log('我是全局关闭方法')
+})
+```
+
+## 更新日志
+
+### 0.1.1
+
+*2019-11-17*
+
+- 完成基础版提交

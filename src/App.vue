@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <button @click="showViewer('1')">图集1</button>
-    <button @click="showViewer('2')">图集2</button>
+    <button @click="showViewer('1')">全局引入</button>
+    <button @click="showViewer('2')">局部引入</button>
   </div>
 </template>
 
 <script>
+import PreviewPic from 'vue-preview-pictures'
 export default {
   name: 'app',
   data() {
@@ -27,17 +28,31 @@ export default {
   },
   methods: {
     showViewer(index) {
-      this.$PreviewPic({
-        zIndex: 2000,
-        index: 2,
-        list: this['list' + index],
-        onClose: (i) => {
-          console.log(i)
-        },
-        onSelect: (i) => {
-          console.log(i)
-        }
-      });
+      if (index === '1') {
+        this.$PreviewPic({
+          zIndex: 2000,
+          index: 2,
+          list: this['list' + index],
+          onClose: (i) => {
+            console.log(i)
+          },
+          onSelect: (i) => {
+            console.log(i)
+          }
+        })
+      } else {
+        PreviewPic({
+          zIndex: 2000,
+          index: 2,
+          list: this['list' + index],
+          onClose: (i) => {
+            console.log(i)
+          },
+          onSelect: (i) => {
+            console.log(i)
+          }
+        })
+      }
     }
   }
 };
