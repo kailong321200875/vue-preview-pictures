@@ -1,8 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+const NODE_ENV = process.env.NODE_ENV
 
 module.exports = {
-  entry: './src/main.js',
+  entry: NODE_ENV == 'development' ? './src/main.js' : './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -12,8 +13,7 @@ module.exports = {
     umdNamedDefine: true
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.css$/,
         use: [
           'vue-style-loader',
@@ -70,13 +70,14 @@ module.exports = {
           name: '[name].[ext]?[hash]'
         }
       },
-      { 
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      {
+        test: /\.(svg|ttf|eot|woff|woff2)$/,
         loader: 'url-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          limit: 999999999
         }
-      },
+      }
     ]
   },
   resolve: {

@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import '@/assets/iconfont/iconfont.css'
 
-import Preview from '@/packages/vue-preview-pictures'
-Vue.prototype.$Preview = Preview
+import PreviewPic from '@/packages/vue-preview-pictures'
+Vue.prototype.$PreviewPic = PreviewPic
 
 new Vue({
   el: '#app',

@@ -4,7 +4,7 @@ let PreviewConstructor = Vue.extend(Preview);
 
 let instance;
 
-const PreviewWrap = function(options) {
+const PreviewPic = function(options) {
   if (Vue.prototype.$isServer) return;
   options = options || {};
   
@@ -42,7 +42,7 @@ const select = function(userOnSelect, index) {
   userOnSelect(index)
 }
 
-PreviewWrap.close = function(callback) {
+PreviewPic.close = function(callback) {
   instance.vm.show = false
   setTimeout(() => {
     document.body.removeChild(instance.vm.$el)
@@ -52,4 +52,4 @@ PreviewWrap.close = function(callback) {
   }, 400)
 }
 
-export default PreviewWrap;
+export default PreviewPic;

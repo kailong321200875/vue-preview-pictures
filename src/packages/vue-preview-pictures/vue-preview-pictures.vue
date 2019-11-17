@@ -55,6 +55,7 @@
 <script>
 import { on, off } from '@/utils/dom';
 import { rafThrottle, isFirefox } from '@/utils/util';
+import '@/assets/iconfont/iconfont.css'
 
 const Mode = {
   CONTAIN: {
@@ -70,7 +71,7 @@ const Mode = {
 const mousewheelEventName = isFirefox() ? 'DOMMouseScroll' : 'mousewheel';
 
 export default {
-  name: 'Preview',
+  name: 'PreviewPic',
 
   data() {
     return {

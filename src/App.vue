@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     showViewer(index) {
-      this.$Preview({
+      this.$PreviewPic({
         zIndex: 2000,
         index: 2,
         list: this['list' + index],
