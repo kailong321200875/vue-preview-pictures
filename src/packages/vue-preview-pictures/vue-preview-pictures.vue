@@ -137,8 +137,10 @@ export default {
     show(val) {
       if (val) {
         this.deviceSupportInstall();
+        document.body.style.overflow = 'hidden';
       } else {
         this.deviceSupportUninstall();
+        document.body.style.overflow = 'auto';
       }
     }
   },
@@ -146,12 +148,12 @@ export default {
     hide() {
       this.show = false
       if (typeof this.onClose === 'function') {
-        this.onClose(this.index)
+        this.onClose(this.index);
       }
     },
     select() {
       if (typeof this.onSelect === 'function') {
-        this.onSelect(this.index)
+        this.onSelect(this.index);
       }
     },
     deviceSupportInstall() {
