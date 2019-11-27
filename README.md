@@ -15,7 +15,7 @@
 ```
   import PreviewPic from 'vue-preview-pictures'
   Vue.prototype.$PreviewPic = PreviewPic
-  
+
   可以直接挂在到VUE的原型上，作为全局使用
 ```
 
@@ -23,7 +23,7 @@
 
 ```
   import PreviewPic from 'vue-preview-pictures'
-  
+
   也可以单独在VUE文件中使用
 ```
 
@@ -53,6 +53,15 @@ this.$PreviewPic.close(() => {
 ```
 
 ## 更新日志
+
+### 0.1.5
+
+*2019-11-27*
+
+- 解决第一次打开按空格会在此弹出预览组件的BUG
+- 修复已知BUG
+
+==============================================
 
 ### 0.1.3
 

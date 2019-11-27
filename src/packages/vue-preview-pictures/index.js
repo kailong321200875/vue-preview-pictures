@@ -7,11 +7,12 @@ let instance;
 const PreviewPic = function(options) {
   if (Vue.prototype.$isServer) return;
   options = options || {};
-  
+
   const userOnClose = options.onClose || null;
   const userOnSelect = options.onSelect || null;
 
   options.onClose = function(index) {
+    document.body.style.overflow = 'auto'
     setTimeout(() => {
       if (userOnClose) {
         close(userOnClose, index)
@@ -30,6 +31,7 @@ const PreviewPic = function(options) {
   });
   instance.vm = instance.$mount()
   document.body.appendChild(instance.vm.$el)
+  document.body.style.overflow = 'hidden'
   instance.vm.show = true
   return instance.vm;
 };

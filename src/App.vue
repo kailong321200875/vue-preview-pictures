@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <button @click="showViewer('1')">展示</button>
+    <div style="height: 1000px;"></div>
   </div>
 </template>
 

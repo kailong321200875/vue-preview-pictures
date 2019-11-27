@@ -47,7 +47,7 @@
           @error="handleImgError"
           @mousedown="handleMouseDown"
           @click="select">
-      </div> 
+      </div>
     </div>
   </transition>
 </template>
@@ -134,13 +134,20 @@ export default {
         }
       });
     },
-    show(val) {
-      if (val) {
-        this.deviceSupportInstall();
-        document.body.style.overflow = 'hidden';
-      } else {
-        this.deviceSupportUninstall();
-        document.body.style.overflow = 'auto';
+    show: {
+      handler: function(val) {
+        if (val) {
+          this.$nextTick(() => {
+            this.$refs['image-viewer__wrapper'].focus();
+            document.body.style.overflow = 'hidden';
+            this.deviceSupportInstall();
+          })
+        } else {
+          this.$nextTick(() => {
+            document.body.style.overflow = 'auto';
+            this.deviceSupportUninstall();
+          })
+        }
       }
     }
   },
@@ -246,7 +253,7 @@ export default {
       if (this.loading) return;
       const modeNames = Object.keys(Mode);
       const modeValues = Object.values(Mode);
-      
+
       const index = modeValues.indexOf(this.mode);
       const nextIndex = (index + 1) % modeNames.length;
       this.mode = Mode[modeNames[nextIndex]];
@@ -289,11 +296,6 @@ export default {
       }
       transform.enableTransition = enableTransition;
     }
-  },
-  mounted() {
-    // add tabindex then wrapper can be focusable via Javascript
-    // focus wrapper so arrow key can't cause inner scroll behavior underneath
-    this.$refs['image-viewer__wrapper'].focus();
   }
 };
 </script>
