@@ -252,7 +252,10 @@ export default {
     toggleMode() {
       if (this.loading) return;
       const modeNames = Object.keys(Mode);
-      const modeValues = Object.values(Mode);
+      // const modeValues = Object.values(Mode);
+      const modeValues = Object.keys(Mode).map(e => {
+        return Mode[e]
+      });
 
       const index = modeValues.indexOf(this.mode);
       const nextIndex = (index + 1) % modeNames.length;
